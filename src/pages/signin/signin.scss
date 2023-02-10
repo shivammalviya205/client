@@ -1,0 +1,31 @@
+
+.main{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    text-align: center;
+   
+}
+.leftsignin{
+    width: 40%;
+    text-align: start;
+    background-color: #f1cdd7;
+    color: #865c6c;
+    padding: 70px;
+
+    a>img{
+     width:15vw;
+    }
+}
+.right{
+    width:60%;
+    padding: 50px;
+    text-align: center;
+    background-color: aliceblue;
+
+
+    .btn{
+        background-color:#ea4c89;
+        margin-top: 20px;
+    }
+}
