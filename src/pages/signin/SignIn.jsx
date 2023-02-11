@@ -4,13 +4,16 @@ import './signin.scss'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import logo from '../../images/dribble-transparent.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setLogin } from '../../state';
+
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-
+   const dispatch=useDispatch()
+   const navigate=useNavigate()
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -33,7 +36,18 @@ const SignIn = () => {
             email, password
           })
       });
-      console.log(response);
+      const data= await response.json();
+      console.log(data);
+      console.log(data.token);
+      console.log(data.user);
+      dispatch(
+        setLogin({
+          user: data.user,
+          token: data.token,
+        })
+      );
+      navigate("/home");
+
     } catch (error) {
       console.error(error);
     }
