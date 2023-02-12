@@ -10,7 +10,7 @@ const Posts = () => {
 
     const dispatch=useDispatch();
     const posts=useSelector((state)=>state.posts);
-    
+    const userId=useSelector((state)=>state.user._id);
     const token=useSelector((state)=>state.token);
 
      //const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTNmNDA1OTA3OWNmMWQ5YTk4NjU2MiIsImlhdCI6MTY3NjE0MTg2Nn0.dAJRZsGQBl-sYS9_vFaCsvxLL3RrIXYxxOI0rSMq6ck"
@@ -26,10 +26,25 @@ const Posts = () => {
               console.log(data);
               dispatch(setPosts({ posts: data }));
               console.log(posts);
-    }
+    }  
+
+    const getUserFollowing=async()=>{
+       
+        const response = await fetch(`http://localhost:3002/user/${userId}/following`, {
+            method: "GET",
+            headers: { Authorization: token ,
+            "Content-Type":"application/json"
+        },
+          });
+          const data = await response.json();
+          console.log(data);
+         // dispatch(setPosts({ following: data }));
+         // console.log(posts);
+}
 
     useEffect(()=>{
        getPosts();
+       getUserFollowing();
     },[])
      
     

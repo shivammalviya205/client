@@ -14,6 +14,7 @@ import {
   import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useDispatch, useSelector } from 'react-redux'
 import { setPost } from '../../state'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 const Post = ({
   postId,
   postUserId,
@@ -31,7 +32,7 @@ const Post = ({
   const isLiked=Boolean(likes[loggedInUserId]);
   const likeCount=Object.keys(likes).length;
   const viewcount=90;
-
+  const navigate=useNavigate()
   const patchLike=async()=>{
     const response=await fetch(`http://localhost:3002/posts/${postId}/like`,{
       method:"PATCH",
@@ -45,19 +46,19 @@ const Post = ({
     })
     const updatedPost=await response.json();
     dispatch((setPost({post:updatedPost})));
-
   };
-
-console.log(postId)
-
-
-
+  
+  const handleclick=()=>{
+    navigate(`/home/postprofile/${postId}`)
+  }
+  
+  
 
   return ( 
     
    
  <div class="video-preview" >
-   <div class="thumbnail-row">
+   <div class="thumbnail-row" onClick={handleclick}>
      <img class="thumbnail" src={`http://localhost:3002/assets/${picturePath}`} alt=''/>
      <div class="video-time">19:59</div>
    </div>
@@ -90,4 +91,5 @@ console.log(postId)
   )
 }
 
-export default Post
+export default Post 
+

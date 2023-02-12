@@ -4,6 +4,7 @@ const initialState={
     token:null,
     user:null,
     posts:[],
+    following:[],
 } 
 
 export const authSlice=createSlice({
@@ -19,8 +20,8 @@ export const authSlice=createSlice({
           state.token=null;
         },
         setFollowing:(state,action)=>{
-         if(state.user){
-        state.user.friends=action.payload.friends;
+         if(state.following){
+        state.following=action.payload.following;
         }
         else{
             console.error("user is not following anyone ");
@@ -28,7 +29,7 @@ export const authSlice=createSlice({
         },
         setFollowers:(state,action)=>{
             if(state.user){
-           state.user.friends=action.payload.friends;
+           state.user.friends=action.payload.followers;
            }
            else{
                console.error("user is not following anyone ");
@@ -49,6 +50,6 @@ export const authSlice=createSlice({
     }
 })
 
-export const { setMode, setLogin, setLogout, setFriends, setPosts, setPost } =
+export const { setMode, setLogin, setLogout, setFollowing, setPosts, setPost } =
   authSlice.actions;
 export default authSlice.reducer;

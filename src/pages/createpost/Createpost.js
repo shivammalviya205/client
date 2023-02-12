@@ -9,7 +9,7 @@ const Createpost = () => {
     const[description,setdescription]=useState('');
     const userId=useSelector((state)=>(state.user._id))
     const token=useSelector((state)=>(state.token))
-    const dispatch=useDispatch();
+    const dispatch=useDispatch()
     const handledescription=(e)=>{
         setdescription(e.target.value);
     }

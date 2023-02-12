@@ -1,0 +1,29 @@
+.profileimg{
+    width:40px;
+    border-radius: 40px;
+} 
+.flex{
+    display: flex;
+    align-items: center;
+     flex: 0.5;
+     justify-content: center;
+
+}
+.middle{
+    flex-direction: row;
+    flex:1;
+    justify-content:space-between;
+}
+.box{
+    padding :20px 80px; 
+    height:600px;
+    border: 2px solid red;
+}
+.postimg{
+    width:100%;
+    height:400px;
+    overflow: hidden;
+    margin-top: 50px;
+    margin-bottom: 20px;
+   
+} 

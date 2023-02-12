@@ -1,0 +1,21 @@
+.component{
+    margin-top: 30;
+    background: '#F5F5F5';
+    padding: 10
+}
+.container{
+    display:flex;
+    margin-bottom:5
+}
+.name{
+    font-weight:600;
+    font-size:18;
+    margin-right:20;
+}
+.date{
+    font-size:14;
+    color:'#878787';
+} 
+.delete{
+    margin-left:auto
+}
