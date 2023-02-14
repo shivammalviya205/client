@@ -5,13 +5,13 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import logo from '../../images/dribble-transparent.png';
 //import { style } from '@mui/system';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [image, setImage] = useState(null);
-
+  const navigate=useNavigate();
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -44,9 +44,13 @@ const SignUp = () => {
         }
       });
       console.log(response.data);
+      if(response.data){
+        navigate('/signin');
+      }
     } catch (error) {
       console.error(error);
-    }
+    } 
+
   };
 
   return ( 

@@ -90,7 +90,7 @@ const Profile = () => {
             <div>{particularpost.description}</div>
           <div>
             <div><Typography>{particularpost.userName}</Typography></div>
-            <div onClick={togglefollow} style={{cursor:'pointer'}}><Typography>{isfollowing?'UnFollow':'Follow'}</Typography></div>
+            {loggedInUserId!==particularpost.userId && <div onClick={togglefollow} style={{cursor:'pointer'}}><Typography>{isfollowing?'Following':'Follow'}</Typography></div>}
           </div>
         </div>
         <div className="flex">Save</div>

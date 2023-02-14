@@ -29,10 +29,11 @@ const Navbar = () => {
            </ul>
         </div>
         <div className='rightnav'>
+        <Link className='upload-btn' variant='contained' sx={{backgroundColor:'#ea4c89',color:'white'}} to='/createpost'>Upload</Link>
             <div className="dropdown">
    <img src={`http://localhost:3002/assets/${picturePath}`} className="dropbtn" alt="" />
    <div className="dropdown-content">
-    <a href="/">My Profile</a>
+   <Link to='/userprofile' className='a'>My Profile</Link>
     <a href="/">Edit Profile</a>
     <div className='a' onClick={handlelogout}>Logout</div>
    </div>

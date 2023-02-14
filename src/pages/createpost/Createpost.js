@@ -4,12 +4,15 @@ import axios from 'axios'
 import './Createpost.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { setPosts } from '../../state'
+import { useNavigate } from 'react-router-dom'
 const Createpost = () => {
+  const navigate=useNavigate()
     const [image, setImage] = useState(null);
     const[description,setdescription]=useState('');
     const userId=useSelector((state)=>(state.user._id))
     const token=useSelector((state)=>(state.token))
     const dispatch=useDispatch()
+   
     const handledescription=(e)=>{
         setdescription(e.target.value);
     }
@@ -31,9 +34,10 @@ const Createpost = () => {
               'Content-Type': 'multipart/form-data'
             }
           });
-          const data = await response.json();
+          const data = await response.data;
           console.log(data);
-          dispatch(setPosts({ posts: data }));
+          await dispatch(setPosts({ posts: data }));
+          if(data.length!==0)navigate('/userprofile');
         } catch (error) {
           console.error(error);
         }

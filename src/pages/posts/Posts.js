@@ -18,9 +18,8 @@ const Posts = () => {
        
             const response = await fetch("http://localhost:3002/posts", {
                 method: "GET",
-                headers: { Authorization: token ,
-                "Content-Type":"application/json"
-            },
+                headers: {Authorization:token,
+                "Content-Type":"application/json"},
               });
               const data = await response.json();
               console.log(data);
@@ -28,30 +27,31 @@ const Posts = () => {
               console.log(posts);
     }  
 
-    const getUserFollowing=async()=>{
+//     const getUserFollowing=async()=>{
        
-        const response = await fetch(`http://localhost:3002/user/${userId}/following`, {
-            method: "GET",
-            headers: { Authorization: token ,
-            "Content-Type":"application/json"
-        },
-          });
-          const data = await response.json();
-          console.log(data);
-         // dispatch(setPosts({ following: data }));
-         // console.log(posts);
-}
+//         const response = await fetch(`http://localhost:3002/user/${userId}/following`, {
+//             method: "GET",
+//             headers: { Authorization: token ,
+//             "Content-Type":"application/json"
+//         },
+//           });
+//           const data = await response.json();
+//           console.log(data);
+//          // dispatch(setPosts({ following: data }));
+//          // console.log(posts);
+// }         
 
     useEffect(()=>{
        getPosts();
-       getUserFollowing();
-    },[])
+      // getUserFollowing();
+    },[posts.length])
      
     
     return (<>
         <Navbar/>
     <div className='video-grid'>
-     {
+       
+      {
         posts.map((
             {
              _id,
@@ -77,7 +77,7 @@ const Posts = () => {
          comments={comments}
          />
         )
-     }
+     } 
         
     </div>
     </>

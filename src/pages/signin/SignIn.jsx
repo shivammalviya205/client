@@ -35,18 +35,19 @@ const SignIn = () => {
           body: JSON.stringify({
             email, password
           })
-      });
+      })
       const data= await response.json();
       console.log(data);
       console.log(data.token);
       console.log(data.user);
+      
       dispatch(
         setLogin({
           user: data.user,
           token: data.token,
         })
       );
-      navigate("/home");
+    navigate('/home')
 
     } catch (error) {
       console.error(error);
@@ -67,7 +68,7 @@ const SignIn = () => {
       <TextField margin="normal"  required fullWidth  id="outlined-uncontrolled" label="Password" 
          type="password"  value={password} onChange={handlePasswordChange} />
        </div>
-      <Button className='btn' variant='contained' type="submit">Sign In</Button>
+      <Button className='btn' variant='contained' type="submit" >Sign In</Button>
       <p>Not a member ? <Link to='/signup'>Sign Up Now</Link></p>
     </form>
       </div>
