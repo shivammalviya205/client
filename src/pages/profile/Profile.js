@@ -1,5 +1,6 @@
 import { FavoriteBorderOutlined, FavoriteOutlined } from '@mui/icons-material'
-import { IconButton, Typography } from '@mui/material'
+import { Button, IconButton, Typography } from '@mui/material'
+import { color } from '@mui/system'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
@@ -85,17 +86,18 @@ const Profile = () => {
     <Navbar/>
     <div className='box'>
     <div className='flex '>
-         <div className="flex"><img className='profileimg' src={`http://localhost:3002/assets/${particularpost.userPicturePath}`} alt="" /></div>
+         <div className="flex" style={{flexDirection:'column'}}><img className='profileimg' src={`http://localhost:3002/assets/${particularpost.userPicturePath}`} alt="" />
+         <div><Typography>{particularpost.userName}</Typography></div>
+         </div>
         <div className="flex middle">
             <div>{particularpost.description}</div>
-          <div>
-            <div><Typography>{particularpost.userName}</Typography></div>
-            {loggedInUserId!==particularpost.userId && <div onClick={togglefollow} style={{cursor:'pointer'}}><Typography>{isfollowing?'Following':'Follow'}</Typography></div>}
-          </div>
+           
         </div>
-        <div className="flex">Save</div>
-        <div className="flex">  <div className='item'  >
-     <IconButton onClick={patchLike}>
+        <div className="flex"></div>
+        <div className="flex">  
+        <div className='item'>
+        {loggedInUserId!==particularpost.userId && <div onClick={togglefollow} style={{cursor:'pointer',marginRight:'15px'}}><Button variant='contained'>{isfollowing?'Following':'Follow'}</Button></div>}
+          <IconButton onClick={patchLike}>
               {isLiked ? (
                 <FavoriteOutlined sx={{ color:'red' }} />
               ) : (

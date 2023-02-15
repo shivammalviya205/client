@@ -79,6 +79,7 @@ const Userprofile = () => {
   return (
     <>
     <Navbar/>
+    
     <Box sx={{ bgcolor: '#cfe8fc',paddingTop:'60px',paddingBottom:'20px' }}>
             <div className="profile-middle">
             <div className='profile-img'>
@@ -86,19 +87,20 @@ const Userprofile = () => {
             </div>
             <div className='flex-middle'>
                 <div>
-                <div><Typography>{userName}</Typography></div>
+                <div><h1>{userName}</h1></div>
                 <div><Typography>{userName.email}</Typography></div>
                 <div>{email}</div>
               </div>
               <div className='data-box'>
             <div className='data'><Typography>{followers.length} Followers</Typography></div>
-            <div className='data'><Typography> {following.length}Following</Typography></div>
-            <div className='data'><Typography> {posts.length} Posts</Typography></div>
+            <div className='data'><Typography>{following.length} Following</Typography></div>
+            <div className='data'><Typography>{posts.length} Posts</Typography></div>
             </div>
             </div>
             </div>
    </Box>
    <Container/>
+   <h1 id='text'>My <span>Posts</span></h1>
    <div className='video-grid'>
        { posts && posts.map((
             {
@@ -109,7 +111,8 @@ const Userprofile = () => {
              picturePath,
              userPicturePath,
              likes,
-             comments, 
+             comments,
+             views,
             }
         )=>
          <Post 
@@ -122,6 +125,7 @@ const Userprofile = () => {
          userPicturePath={userPicturePath}
          likes={likes}
          comments={comments}
+         views={views}
          />
         )
         }

@@ -1,7 +1,7 @@
 import { Button, TextareaAutosize, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect, useReducer, useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setPost } from '../state';
 import Comment from './Comment';
 import './Comments.scss';
@@ -17,7 +17,7 @@ import './Comments.scss';
 const Comments = ({comments,token,userId,postId,setToggle }) => {
     
     const url = 'https://static.thenounproject.com/png/12017-200.png'
-    
+    const {picturePath}=useSelector((state)=>state.user);
     const [comment, setComment] = useState({});
     //const [comments, setComments] = useState([]);
     const [data, setData] = useState();
@@ -62,15 +62,16 @@ const Comments = ({comments,token,userId,postId,setToggle }) => {
 
   
     return (
-        <Box>
-            <Box className="container">
-                <img src={url} className="image" alt="dp" />   
+        <Box sx={{marginBottom:'30px !important'}} >
+            <Box className="container-1" >
+            <img src={`http://localhost:3002/assets/${picturePath}`} className="image" alt="" />   
                 <TextareaAutosize 
                     rowsMin={5} 
                     className="textarea" 
                     placeholder="what's on your mind?"
                     onChange={(e) => handleChange(e)} 
                     value={data}
+                    style={{marginTop:'10px',padding:'10px'}}
                 />
                 <Button 
                     variant="contained" 
@@ -78,8 +79,9 @@ const Comments = ({comments,token,userId,postId,setToggle }) => {
                     size="medium" 
                     className="button"
                     onClick={(e) => addComment(e)}
+                    sx={{marginTop:'13px'}}
                 >Post</Button>  
-                <Typography>{comments.length}</Typography>           
+                          
             </Box>
             <Box>
                 {

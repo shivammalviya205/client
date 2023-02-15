@@ -20,7 +20,7 @@ const Navbar = () => {
     <div className='nav'>
         <div className='leftnav'> 
            <ul>
-            <li className="flex item"><Link to='/'><img className='logo-img' src={img} alt="" /></Link></li>
+            <li className="flex item"><Link to='/home'><img className='logo-img' src={img} alt="" /></Link></li>
             <li className="item">Inspiration</li>
             <li className="item">Find work</li>
             <li className="item">Learn Design</li>
@@ -34,7 +34,7 @@ const Navbar = () => {
    <img src={`http://localhost:3002/assets/${picturePath}`} className="dropbtn" alt="" />
    <div className="dropdown-content">
    <Link to='/userprofile' className='a'>My Profile</Link>
-    <a href="/">Edit Profile</a>
+    <a href="/home">Edit Profile</a>
     <div className='a' onClick={handlelogout}>Logout</div>
    </div>
     </div>

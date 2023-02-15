@@ -62,7 +62,7 @@ const Posts = () => {
              userPicturePath,
              likes,
              comments,
-             
+             views,
             }
         )=>
          <Post 
@@ -75,6 +75,7 @@ const Posts = () => {
          userPicturePath={userPicturePath}
          likes={likes}
          comments={comments}
+         views={views}
          />
         )
      } 

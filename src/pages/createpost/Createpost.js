@@ -5,6 +5,7 @@ import './Createpost.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { setPosts } from '../../state'
 import { useNavigate } from 'react-router-dom'
+import Navbar from '../../components/Navbar'
 const Createpost = () => {
   const navigate=useNavigate()
     const [image, setImage] = useState(null);
@@ -45,19 +46,23 @@ const Createpost = () => {
 
 
   return (
+    <>
+    <Navbar/>
     <div className='center'>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='form'>
+          <div><h1 id='text'>Showcase Your Work to <span>world!</span></h1></div>
      <div>
-      <TextField margin="normal"  required fullWidth  id="outlined-uncontrolled" label="Title" 
+      <TextField margin="normal"  required fullWidth  id="outlined-uncontrolled" label="Title for Your Post" 
          type="text"  value={description} onChange={handledescription} />
        </div>
       <div>
         <TextField margin="normal"  required fullWidth  id="outlined-uncontrolled" 
           type="file"  onChange={handleimage}/>
       </div>
-      <Button className='btn' variant='contained' type="submit">Create Account</Button>
+      <Button className='btn' variant='contained' type="submit">Create Post</Button>
       </form>
     </div>
+    </>
   )
 }
 

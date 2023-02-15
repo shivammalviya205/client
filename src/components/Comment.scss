@@ -1,17 +1,17 @@
 .component{
-    margin-top: 30;
+    margin-top: 10;
     background: '#F5F5F5';
-    padding: 10
+    padding: 10;
+    margin-bottom: 10px;
+
 }
 .container{
     display:flex;
-    margin-bottom:5
+    margin-bottom:5;
+    align-items: center;
+    background-color: rgb(238, 232, 232);
 }
-.name{
-    font-weight:600;
-    font-size:18;
-    margin-right:20;
-}
+
 .date{
     font-size:14;
     color:'#878787';

@@ -24,6 +24,7 @@ const Post = ({
   userPicturePath,
   likes,
   comments,
+  views,
 }) => {
     
   const dispatch=useDispatch();
@@ -60,7 +61,6 @@ const Post = ({
  <div class="video-preview" >
    <div class="thumbnail-row" onClick={handleclick}>
      <img class="thumbnail" src={`http://localhost:3002/assets/${picturePath}`} alt=''/>
-     <div class="video-time">19:59</div>
    </div>
    <div class="video-info-grid">
      <div class="channel-picture">
@@ -83,7 +83,7 @@ const Post = ({
         <IconButton>
      <VisibilityIcon/>
      </IconButton>
-     <Typography>{viewcount}</Typography>
+     <Typography>{views}</Typography>
      </div>
    </div>
  </div>

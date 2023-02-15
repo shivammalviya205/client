@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { setPost } from "../state";
 import './Comment.scss';
-const Comment = ({ comment, setToggle,userId,token,postId }) => {
+const Comment = ({ comment, setToggle,userId,token,postId, }) => {
     const iscommentowner=comment.userId===userId;
     const dispatch=useDispatch();
      
@@ -30,8 +30,9 @@ const Comment = ({ comment, setToggle,userId,token,postId }) => {
     return (
         <Box className="component">
             <Box className="container" >
-                <Typography className="name">{comment.textcomment}</Typography>
-                <Typography className="name">{comment.userName}</Typography>
+            <img src={`http://localhost:3002/assets/${comment.userPicturePath}`} className="image" alt="" /> 
+                <Typography sx={{marginLeft:'10px'}}>{comment.userName}</Typography>
+                <Typography sx={{marginLeft:'20px'}}>{comment.textcomment}</Typography>
                 {/* <Typography className="date">{new Date(comment.date).toDateString()}</Typography> */}
                 {iscommentowner &&(<Delete className="delete" onClick={() => removeComment()} />)}
             </Box>

@@ -54,3 +54,20 @@
     display: flex;
     flex-direction: row;
 }
+
+#text {
+  font-size: 2.75rem;
+  font-weight: 400;
+  text-align: center;
+  color:#030303;
+  text-transform: capitalize;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+  span {
+    color:#313bac;
+  }
+
+} 
+
+.data{
+  margin-right: 10px;
+}

@@ -1,31 +1,4 @@
 
-// .card-wrapper{
-//     display: grid;
-//     grid-template-columns: 1fr 1fr 1fr ;
-//     border: 2px solid blue;
-//     row-gap: 15px;
-//     column-gap: 15px;
-//     padding:20px;
-// }
-
-// .card{
-//   background-color: aqua;
-//   height:250px;
-  
-// }
-// .card-flex{
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-// }
-// .profile{
-//     width:20px;
-//     border-radius: 10px;
-// }
-// .cardimg{
-//     width:880px;
-//     overflow: hidden;
-// }
 
 .thumbnail {
     width: 100%;
@@ -98,17 +71,7 @@
     }
   }
   
-  .video-time {
-    font-size: 12px;
-    font-weight: 500;
-    padding: 4px;
-    border-radius: 2px;
-    background-color: black;
-    color: white;
-    position: absolute;
-    bottom: 8px;
-    right: 5px;
-  }
+ 
   
   .item{
     display: flex;
@@ -121,3 +84,4 @@
     align-items: center;
     justify-content: flex-start;
   }
+  
