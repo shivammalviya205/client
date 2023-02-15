@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './signin.scss'
+
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import logo from '../../images/dribble-transparent.png';
@@ -40,13 +41,13 @@ const SignIn = () => {
       console.log(data);
       console.log(data.token);
       console.log(data.user);
-      
       dispatch(
         setLogin({
           user: data.user,
           token: data.token,
         })
       );
+
     navigate('/home')
 
     } catch (error) {

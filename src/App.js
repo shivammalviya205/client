@@ -2,6 +2,7 @@
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Createpost from "./pages/createpost/Createpost";
+import Followingpost from "./pages/following/Followingpost";
 import Posts from "./pages/posts/Posts";
 import Profile from "./pages/profile/Profile";
 import SignIn from "./pages/signin/SignIn";
@@ -24,6 +25,7 @@ function App() {
     <Route path='/home/postprofile/:id' element={<Profile/>}  />
     <Route path='/createpost' element={<Createpost/>}  />
     <Route path='/userprofile' element={<Userprofile/>}  />
+    <Route path='/following' element={<Followingpost/>}  />
     </Routes>
     </BrowserRouter> 
     </>

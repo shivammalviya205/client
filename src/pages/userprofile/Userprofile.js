@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Navbar from '../../components/Navbar';
-import { setPosts } from '../../state';
+import { setFollowers, setFollowing, setPosts } from '../../state';
 import Post from '../post/Post';
 import './userprofile.scss';
 const Userprofile = () => {
@@ -12,9 +12,9 @@ const Userprofile = () => {
     const posts=useSelector((state)=>state.posts);
     const user=useSelector((state)=>state.user)
     const token=useSelector((state)=>state.token)
-    const{picturePath,followers,following,userName,email,_id}=user; 
-    
-
+    const following=useSelector((state)=>state.following);
+    const followers=useSelector((state)=>state.followers);
+    const{picturePath,userName,email,_id}=user; 
     // const[userfollowers,setuserfollowers]=useState([]);
     // const[userfollowing,setuserfollowing]=useState([]);
     
@@ -69,10 +69,43 @@ const Userprofile = () => {
           console.log(data);
           dispatch(setPosts({ posts: data }));
         }
-    
+
+
+            const getUserFollowing=async()=>{
+       
+        const response = await fetch(`http://localhost:3002/user/${_id}/following`, {
+            method: "GET",
+            headers: { Authorization: token ,
+            "Content-Type":"application/json"
+        },
+          });
+          const data = await response.json();
+          console.log(data);
+          console.log(data.length);
+          dispatch(setFollowing({ following: data }));
+         console.log(posts);
+}    
+
+const getUserFollowers=async()=>{
+       
+  const response = await fetch(`http://localhost:3002/user/${_id}/followers`, {
+      method: "GET",
+      headers: { Authorization: token ,
+      "Content-Type":"application/json"
+  },
+    });
+    const data = await response.json();
+    console.log(data);
+    console.log(data.length);
+    dispatch(setFollowers({ followers: data }));
+    console.log(posts);
+}     
+
 
    useEffect(()=>{
       getUserPosts();
+      getUserFollowers();
+      getUserFollowing();
    },[])
 
 

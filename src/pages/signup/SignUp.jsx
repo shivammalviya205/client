@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import M from 'materialize-css';
 import './signup.scss'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import logo from '../../images/dribble-transparent.png';
 //import { style } from '@mui/system';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
+
 const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -45,6 +47,7 @@ const SignUp = () => {
       });
       console.log(response.data);
       if(response.data){
+        M.toast({ html:'account success', classes: "#43a047 green darken-1" })
         navigate('/signin');
       }
     } catch (error) {
