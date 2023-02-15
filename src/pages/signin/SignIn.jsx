@@ -70,7 +70,7 @@ const SignIn = () => {
          type="password"  value={password} onChange={handlePasswordChange} />
        </div>
       <Button className='btn' variant='contained' type="submit" >Sign In</Button>
-      <p>Not a member ? <Link to='/signup'>Sign Up Now</Link></p>
+      <p>Not a member ? <Link to='/'>Sign Up Now</Link></p>
     </form>
       </div>
     </div>
