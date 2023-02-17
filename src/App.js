@@ -4,6 +4,7 @@ import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Createpost from "./pages/createpost/Createpost";
 import Followingpost from "./pages/following/Followingpost";
+import Home from "./pages/home/Home";
 import Posts from "./pages/posts/Posts";
 import Profile from "./pages/profile/Profile";
 import SignIn from "./pages/signin/SignIn";
@@ -22,7 +23,7 @@ function App() {
    
     <Route path="/" element={<SignUp/>} />
     <Route path="/signin" element={<SignIn/>} />
-    <Route path='/home'  element={isAuth ? <Posts /> : <Navigate to="/" />} />
+    <Route path='/home'  element={isAuth ? <Home /> : <Navigate to="/" />} />
     <Route path='/home/postprofile/:id' element={isAuth?<Profile/>:<Navigate to="/" />}  />
     <Route path='/createpost' element={isAuth?<Createpost/>:<Navigate to="/" />}  />
     <Route path='/userprofile' element={isAuth?<Userprofile/>:<Navigate to="/" />}  />
