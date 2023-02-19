@@ -6,6 +6,7 @@ import profile from '../../images/profile.jpg'
 import { IconButton, Typography } from '@mui/material'
 import {
     ChatBubbleOutlineOutlined,
+    Delete,
     FavoriteBorderOutlined,
     FavoriteOutlined,
     ShareOutlined,
@@ -13,7 +14,7 @@ import {
   } from "@mui/icons-material";
   import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useDispatch, useSelector } from 'react-redux'
-import { setPost } from '../../state'
+import { setPost, setPosts } from '../../state'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 const Post = ({
   postId,
@@ -30,6 +31,9 @@ const Post = ({
   const dispatch=useDispatch();
   const token=useSelector((state)=>state.token);
   const loggedInUserId=useSelector((state)=>state.user._id)
+  const user=useSelector((state)=>state.user);
+  let isallowed=false;
+  if(user.isadmin===true){isallowed=true;}
   const isLiked=Boolean(likes[loggedInUserId]);
   const likeCount=Object.keys(likes).length;
   const viewcount=90;
@@ -53,7 +57,39 @@ const Post = ({
     navigate(`/home/postprofile/${postId}`)
   }
   
-  
+
+  const getPosts=async()=>{
+       
+    const response = await fetch("http://localhost:3002/posts", {
+        method: "GET",
+        headers: {Authorization:token,
+        "Content-Type":"application/json"},
+      });
+      const data = await response.json();
+    //   console.log(data);
+      dispatch(setPosts({ posts: data }));
+    //   console.log(posts);
+}  
+
+  const removepost=async()=>{
+    const response=await fetch(`http://localhost:3002/posts/${postId}/deletepost`,{
+      method:"DELETE",
+      headers:{
+        Authorization:token,
+        "Content-Type":"application/json",
+      }
+    })
+    const msg=await response.json();
+    console.log(msg);
+    if(msg){
+      if(isallowed){
+        navigate('/admin');
+        getPosts();
+      }
+      else{
+      navigate('/home');}
+    }
+  }
 
   return ( 
     
@@ -80,10 +116,11 @@ const Post = ({
             <Typography>{likeCount}</Typography>
      </div>
      <div className='item'>
-        <IconButton>
+       {isallowed?(<Delete style={{cursor:'pointer'}} onClick={() => removepost()} />):(<><IconButton>
      <VisibilityIcon/>
      </IconButton>
-     <Typography>{views}</Typography>
+     <Typography>{views}</Typography></>) 
+         }  
      </div>
    </div>
  </div>

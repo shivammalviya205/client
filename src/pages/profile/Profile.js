@@ -1,9 +1,9 @@
-import { FavoriteBorderOutlined, FavoriteOutlined } from '@mui/icons-material'
+import { Delete, FavoriteBorderOutlined, FavoriteOutlined } from '@mui/icons-material'
 import { Button,  IconButton, Typography } from '@mui/material'
 import { color } from '@mui/system'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Comments from '../../components/Comments'
 import ResponsiveDialog from '../../components/Hire'
 import Navbar from '../../components/Navbar'
@@ -12,6 +12,7 @@ import { setFollowing } from '../../state'
 import './profile.scss'
 
 const Profile = () => {
+  const navigate=useNavigate();
     const [particularpost,setParticularpost]=useState({})
     const[isLiked,setisLiked]=useState(false);
     const[likecount,setlikeCount]=useState(0);
@@ -80,6 +81,22 @@ const Profile = () => {
       console.log(data);
     }
 
+
+    const removepost=async()=>{
+      const response=await fetch(`http://localhost:3002/posts/${particularpost._id}/deletepost`,{
+        method:"DELETE",
+        headers:{
+          Authorization:token,
+          "Content-Type":"application/json",
+        }
+      })
+      const msg=await response.json();
+      console.log(msg);
+      if(msg){
+        navigate('/home');
+      }
+    }
+
     const isfollowing=following.find((friend)=>friend._id===particularpost.userId);
 
      useEffect(()=>{  
@@ -87,7 +104,8 @@ const Profile = () => {
      },[toggle,isfollowing])
 
     if(particularpost.length===0) return;
-   
+   console.log(particularpost.userId);
+   console.log(loggedInUserId);
 
   return (
     <div>
@@ -120,6 +138,7 @@ const Profile = () => {
               )}
             </IconButton>
             <Typography>{likecount}</Typography>
+            {loggedInUserId===particularpost.userId &&(<Delete className="delete" style={{marginLeft:'20px',cursor:'pointer'}} onClick={() => removepost()} />)}
      </div></div>
     </div>
     <div className='flex item'>
