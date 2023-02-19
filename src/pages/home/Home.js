@@ -4,7 +4,8 @@ import { setPosts } from '../../state'
 import Navbar from '../../components/Navbar'
 import Posts from '../posts/Posts'
 import { Search } from '@mui/icons-material'
-import './Home.scss';
+//import './Home.scss';
+import classes from "./Home.module.css";
 import CustomizedInputBase from '../../components/SearchBar'
 import FilterComponent from '../../components/FilterComponent'
 import { sortByDate, sortByLikes } from '../../utilities'

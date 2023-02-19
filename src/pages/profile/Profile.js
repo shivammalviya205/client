@@ -1,10 +1,11 @@
 import { FavoriteBorderOutlined, FavoriteOutlined } from '@mui/icons-material'
-import { Button, IconButton, Typography } from '@mui/material'
+import { Button,  IconButton, Typography } from '@mui/material'
 import { color } from '@mui/system'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import Comments from '../../components/Comments'
+import ResponsiveDialog from '../../components/Hire'
 import Navbar from '../../components/Navbar'
 import { setPost } from '../../state'
 import { setFollowing } from '../../state'
@@ -24,6 +25,13 @@ const Profile = () => {
       const following=useSelector((state)=>state.following);
      const [toggle, setToggle] = useState(false);
     
+     //modal for hire me
+     const [open, setOpen] = React.useState(false);
+     const handleClickOpen = () => {
+      setOpen(true);
+    };
+  
+
      const getpost=async()=>{
         const filteredpost= await posts.filter(({_id})=>(_id===id))
          setParticularpost(filteredpost[0]);
@@ -93,10 +101,17 @@ const Profile = () => {
             <div>{particularpost.description}</div>
            
         </div>
-        <div className="flex"></div>
+        <div className="flex" style={{justifyContent:'flex-end'}}>
+          <div className='item'>
+          {loggedInUserId!==particularpost.userId && <div><button className='upload-btn' onClick={handleClickOpen}>
+        Hire me</button></div>}
+          </div>
+        </div>
         <div className="flex">  
         <div className='item'>
+       
         {loggedInUserId!==particularpost.userId && <div onClick={togglefollow} style={{cursor:'pointer',marginRight:'15px'}}><Button variant='contained'>{isfollowing?'Following':'Follow'}</Button></div>}
+       
           <IconButton onClick={patchLike}>
               {isLiked ? (
                 <FavoriteOutlined sx={{ color:'red' }} />
@@ -114,6 +129,7 @@ const Profile = () => {
      {particularpost.comments && (<Comments comments={particularpost.comments} token={token} userId={loggedInUserId} postId={id} setToggle={setToggle}/>)}
     </div>
     </div>
+    <ResponsiveDialog open={open} setOpen={setOpen} token={token} postUserId={particularpost.userId} id={loggedInUserId} />
     </div>
   )
 } 

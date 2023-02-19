@@ -47,11 +47,14 @@ const SignIn = () => {
           token: data.token,
         })
       );
-
-    navigate('/home')
+     if(data.token){
+    navigate('/home')}
+    else{
+      alert(data.msg)
+    }
 
     } catch (error) {
-      console.error(error);
+      alert(error);
     }
   };
 
@@ -70,7 +73,11 @@ const SignIn = () => {
          type="password"  value={password} onChange={handlePasswordChange} />
        </div>
       <Button className='btn' variant='contained' type="submit" >Sign In</Button>
+      <div className='downdiv'>
+      <p><Link to='/forgotpswd'>Forgot password ?</Link></p>
       <p>Not a member ? <Link to='/'>Sign Up Now</Link></p>
+     
+      </div>
     </form>
       </div>
     </div>

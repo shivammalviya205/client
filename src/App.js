@@ -2,8 +2,10 @@
 import { useSelector } from "react-redux";
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Changepassword from "./pages/Changepassword/Changepassword";
 import Createpost from "./pages/createpost/Createpost";
 import Followingpost from "./pages/following/Followingpost";
+import Forgot from "./pages/Forgot/Forgot";
 import Home from "./pages/home/Home";
 import Posts from "./pages/posts/Posts";
 import Profile from "./pages/profile/Profile";
@@ -23,6 +25,8 @@ function App() {
    
     <Route path="/" element={<SignUp/>} />
     <Route path="/signin" element={<SignIn/>} />
+    <Route path="/forgotpswd" element={<Forgot/>} />
+    <Route path="/changepassword" element={<Changepassword/>} />
     <Route path='/home'  element={isAuth ? <Home /> : <Navigate to="/" />} />
     <Route path='/home/postprofile/:id' element={isAuth?<Profile/>:<Navigate to="/" />}  />
     <Route path='/createpost' element={isAuth?<Createpost/>:<Navigate to="/" />}  />
