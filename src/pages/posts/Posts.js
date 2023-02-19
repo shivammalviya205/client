@@ -49,7 +49,7 @@ const Posts = ({posts}) => {
     
     return (<>
        
-    <div className='video-grid'>
+    <div className='video-grid-main'>
        
       {
         posts.map((

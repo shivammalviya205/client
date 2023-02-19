@@ -4,11 +4,12 @@ import { setPosts } from '../../state'
 import Navbar from '../../components/Navbar'
 import Posts from '../posts/Posts'
 import { Search } from '@mui/icons-material'
-//import './Home.scss';
-import classes from "./Home.module.css";
+import './Home.scss';
+//import classes from "./Home.module.css";
 import CustomizedInputBase from '../../components/SearchBar'
 import FilterComponent from '../../components/FilterComponent'
 import { sortByDate, sortByLikes } from '../../utilities'
+import Hero from '../../components/Hero'
 const Home = () => {
  
       const[query,setquery]=useState('');
@@ -55,6 +56,7 @@ const Home = () => {
   return (
     <>
     <Navbar/>
+    <Hero/>
     <CustomizedInputBase query={query} setquery={setquery} postlength={filteredposts.length} postquery={postquery} setpostquery={setpostquery}/>
     <FilterComponent filterterm={filterterm} setfilterterm={setfilterterm}/>
     <Posts posts={filteredposts}/>

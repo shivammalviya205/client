@@ -14,7 +14,7 @@ export default function CustomizedInputBase({query,setquery,postquery,setpostque
     <>
     <Paper
       component="form"
-      sx={{ p: '10px 20px', display: 'flex', alignItems: 'center', width: 600,margin: 'auto',marginTop:'20px', }}
+      sx={{ p: '5px 10px', display: 'flex', alignItems: 'center', width: 600,margin: 'auto',marginTop:'50vh', borderRadius:'50px',backgroundColor:'white',marginBottom:'30px'}}
     >
        <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
         <SearchIcon />
