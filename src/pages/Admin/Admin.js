@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import Navbar from '../../components/Navbar';
 import { setPosts } from '../../state';
 import Posts from '../posts/Posts';
 import './Admin.scss'
@@ -28,9 +29,12 @@ const Admin = () => {
 
 
   return (
+    <>
+    <Navbar/>
     <Posts posts={posts}/>
+    </>
   )
-  
+
 }
 
 export default Admin

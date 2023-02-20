@@ -8,6 +8,9 @@ import { useSelector } from 'react-redux'
 import { setLogout } from '../state';
 const Navbar = () => {
   const {_id,picturePath}=useSelector((state)=>state.user)
+  const user=useSelector((state)=>state.user);
+  let isallowed=false;
+  if(user.isadmin===true){isallowed=true;}
   const navigate=useNavigate();
   console.log(_id);
   console.log(picturePath);
@@ -35,6 +38,7 @@ const Navbar = () => {
    <div className="dropdown-content">
    <Link to={`/userprofile/${_id}`} className='a'>My Profile</Link>
    <Link to='/following' className='a'> My Following</Link>
+   {isallowed?(<Link to='/following' className='a'>Admin Profile</Link>):(<></>)}
     <div className='a' onClick={handlelogout}>Logout</div>
    </div>
     </div>
