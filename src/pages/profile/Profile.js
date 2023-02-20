@@ -115,7 +115,7 @@ const Profile = () => {
     <Navbar/>
     <div className='box'>
     <div className='flex '>
-         <div className="flex" onClick={othersprofile} style={{flexDirection:'column',cursor:'pointer'}}><img className='profileimg' src={`http://localhost:3002/assets/${particularpost.userPicturePath}`} alt="" />
+         <div className="flex"  style={{flexDirection:'column'}}><img onClick={othersprofile} style={{cursor:'pointer'}} className='profileimg' src={`http://localhost:3002/assets/${particularpost.userPicturePath}`} alt="" />
          <div><Typography>{particularpost.userName}</Typography></div>
          </div>
         <div className="flex middle">

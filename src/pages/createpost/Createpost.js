@@ -38,7 +38,7 @@ const Createpost = () => {
           const data = await response.data;
           console.log(data);
           await dispatch(setPosts({ posts: data }));
-          if(data.length!==0)navigate('/userprofile');
+          if(data.length!==0)navigate(`/userprofile/${userId}`);
         } catch (error) {
           console.error(error);
         }

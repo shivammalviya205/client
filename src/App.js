@@ -1,14 +1,13 @@
 
 import { useSelector } from "react-redux";
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
 import Admin from "./pages/Admin/Admin";
 import Changepassword from "./pages/Changepassword/Changepassword";
 import Createpost from "./pages/createpost/Createpost";
 import Followingpost from "./pages/following/Followingpost";
 import Forgot from "./pages/Forgot/Forgot";
 import Home from "./pages/home/Home";
-import Posts from "./pages/posts/Posts";
+
 import Profile from "./pages/profile/Profile";
 import SignIn from "./pages/signin/SignIn";
 import SignUp from "./pages/signup/SignUp";
@@ -25,11 +24,8 @@ function App() {
   }
   return (
     <>
-    
-     <BrowserRouter>
-     
+    <BrowserRouter>
     <Routes>
-     
     <Route path="/" element={<SignUp/>} />
     <Route path="/signin" element={<SignIn/>} />
     <Route path="/forgotpswd" element={<Forgot/>} />

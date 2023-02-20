@@ -5,11 +5,19 @@ import Navbar from '../../components/Navbar'
 import Posts from '../posts/Posts'
 import { Search } from '@mui/icons-material'
 import './Home.scss';
-//import classes from "./Home.module.css";
+// import styles from "./Home.module.css";
 import CustomizedInputBase from '../../components/SearchBar'
 import FilterComponent from '../../components/FilterComponent'
 import { sortByDate, sortByLikes } from '../../utilities'
 import Hero from '../../components/Hero'
+
+
+
+
+
+
+
+
 const Home = () => {
  
       const[query,setquery]=useState('');
@@ -20,7 +28,7 @@ const Home = () => {
     const userId=useSelector((state)=>state.user._id);
     const token=useSelector((state)=>state.token);
     const[isuser,setisuser]=useState(true);
-
+    
     
     const getPosts=async()=>{
        

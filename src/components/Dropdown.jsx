@@ -4,10 +4,14 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import '../pages/home/Home.scss'
+import { border } from '@mui/system';
+
 
 
 export default function BasicSelect({isuser,setisuser}) {
   
+
   const handleChange = (event) => {
     setisuser(event.target.value);
   };
@@ -21,7 +25,6 @@ export default function BasicSelect({isuser,setisuser}) {
           id="demo-simple-select"
           value={isuser}
           onChange={handleChange}
-          
         >
           <MenuItem value={true}>UserName</MenuItem>
           <MenuItem value={false}>PostDesc</MenuItem>

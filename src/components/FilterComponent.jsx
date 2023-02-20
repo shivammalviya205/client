@@ -14,7 +14,7 @@ export default function FilterComponent({filterterm,setfilterterm}) {
   };
 
   return (
-    <Box sx={{ maxWidth: 150,border:'1px solid grey',marginLeft:'30px',borderRadius:3 }}>
+    <Box sx={{ maxWidth: 150,marginLeft:'30px',borderRadius:3 }}>
       <FormControl fullWidth>
         <Select
           labelId="demo-simple-select-label"

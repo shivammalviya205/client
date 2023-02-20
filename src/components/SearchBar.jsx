@@ -28,7 +28,7 @@ export default function CustomizedInputBase({query,setquery,postquery,setpostque
         onChange={(e)=>{isuser?setquery(e.target.value):setpostquery(e.target.value)}}
         inputProps={{ 'aria-label': 'search google maps' }}
       />
-      <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+
       <BasicSelect isuser={isuser} setisuser={setisuser}/>
       </Paper>
       {postlength===0||isuser?'':
