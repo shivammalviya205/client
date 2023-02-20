@@ -27,7 +27,7 @@ const Post = ({
   comments,
   views,
 }) => {
-    
+    const params=useParams();
   const dispatch=useDispatch();
   const token=useSelector((state)=>state.token);
   const loggedInUserId=useSelector((state)=>state.user._id)
@@ -71,6 +71,12 @@ const Post = ({
     //   console.log(posts);
 }  
 
+   const othersprofile=()=>{
+   // params.push(`/${postUserId}`);
+    navigate(`/userprofile/${postUserId}`)
+  }
+  
+
   const removepost=async()=>{
     const response=await fetch(`http://localhost:3002/posts/${postId}/deletepost`,{
       method:"DELETE",
@@ -99,7 +105,7 @@ const Post = ({
      <img class="thumbnail" src={`http://localhost:3002/assets/${picturePath}`} alt=''/>
    </div>
    <div class="video-info-grid">
-     <div class="channel-picture">
+     <div class="channel-picture" onClick={othersprofile} style={{cursor:'pointer'}}>
        { userPicturePath && (<img class="profile-picture" src={`http://localhost:3002/assets/${userPicturePath}`} alt='' />) }
      </div>
      <div className='item'>

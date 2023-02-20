@@ -33,7 +33,7 @@ const Navbar = () => {
             <div className="dropdown">
    <img src={`http://localhost:3002/assets/${picturePath}`} className="dropbtn" alt="" />
    <div className="dropdown-content">
-   <Link to='/userprofile' className='a'>My Profile</Link>
+   <Link to={`/userprofile/${_id}`} className='a'>My Profile</Link>
    <Link to='/following' className='a'> My Following</Link>
     <div className='a' onClick={handlelogout}>Logout</div>
    </div>

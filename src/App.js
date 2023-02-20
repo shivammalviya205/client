@@ -38,7 +38,7 @@ function App() {
     <Route path='/home'  element={isAuth ? <Home /> : <Navigate to="/" />} />
     <Route path='/home/postprofile/:id' element={isAuth?<Profile/>:<Navigate to="/" />}  />
     <Route path='/createpost' element={isAuth?<Createpost/>:<Navigate to="/" />}  />
-    <Route path='/userprofile' element={isAuth?<Userprofile/>:<Navigate to="/" />}  />
+    <Route path='/userprofile/:postuserid' element={isAuth?<Userprofile/>:<Navigate to="/" />}  />
     <Route path='/following' element={isAuth?<Followingpost/>:<Navigate to="/" />}  />
     </Routes>
     </BrowserRouter> 

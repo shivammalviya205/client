@@ -7,8 +7,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import BasicSelect from './Dropdown';
 
 
-export default function CustomizedInputBase({query,setquery,postquery,setpostquery,postlength}) {
-    const[isuser,setisuser]=useState(true);
+export default function CustomizedInputBase({query,setquery,postquery,setpostquery,postlength,setisuser,isuser}) {
+   
      isuser?setpostquery(''):setquery('');
   return (
     <>

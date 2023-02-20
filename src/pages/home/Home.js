@@ -19,7 +19,7 @@ const Home = () => {
     const posts=useSelector((state)=>state.posts);
     const userId=useSelector((state)=>state.user._id);
     const token=useSelector((state)=>state.token);
-    
+    const[isuser,setisuser]=useState(true);
 
     
     const getPosts=async()=>{
@@ -57,7 +57,7 @@ const Home = () => {
     <>
     <Navbar/>
     <Hero/>
-    <CustomizedInputBase query={query} setquery={setquery} postlength={filteredposts.length} postquery={postquery} setpostquery={setpostquery}/>
+    <CustomizedInputBase query={query} setquery={setquery} postlength={filteredposts.length} postquery={postquery} setpostquery={setpostquery} isuser={isuser} setisuser={setisuser}/>
     <FilterComponent filterterm={filterterm} setfilterterm={setfilterterm}/>
     <Posts posts={filteredposts}/>
      
