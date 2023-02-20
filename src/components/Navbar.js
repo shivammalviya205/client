@@ -38,7 +38,7 @@ const Navbar = () => {
    <div className="dropdown-content">
    <Link to={`/userprofile/${_id}`} className='a'>My Profile</Link>
    <Link to='/following' className='a'> My Following</Link>
-   {isallowed?(<Link to='/following' className='a'>Admin Profile</Link>):(<></>)}
+   {isallowed?(<Link to='/admin' className='a'>Admin Profile</Link>):(<></>)}
     <div className='a' onClick={handlelogout}>Logout</div>
    </div>
     </div>
